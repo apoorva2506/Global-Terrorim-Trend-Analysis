@@ -1,0 +1,882 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Terrorism</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<style>
+
+.story {
+
+  margin-top: 50px;
+
+}
+
+.bubble {
+ font: 16px"Avenir";
+
+ /*margin-top: 50px;*/
+  /*margin-bottom: 800px;*/
+
+}
+
+.stackbar {
+    font: 10px sans-serif;
+    shape-rendering: crispEdges;
+  /*  margin-left: 30px;
+    margin-right: 160px;
+    margin-top: 20px;
+    margin-bottom: 35px;*/
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+  }
+
+  path.domain {
+    stroke: none;
+  }
+
+  .y .tick line {
+    stroke: #ddd;
+  }
+
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.no_of_attacks {
+margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+}
+
+
+
+  div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 45px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  path {
+  fill: none;
+  stroke: #333;
+  stroke-width: .5px;
+}
+
+.land-boundary {
+  stroke-width: 1px;
+}
+
+.county-boundary {
+  stroke: #ddd;
+}
+
+.site {
+  stroke-width: .5px;
+  stroke: #333;
+  fill: #ff0000;
+}
+
+#slider3 {
+  margin: 20px 0 10px 20px;
+  width: 900px;
+}
+
+.d3-slider {
+    position: relative;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    border: 1px solid #aaaaaa;
+    z-index: 2;
+}
+
+.d3-slider-horizontal {
+    height: .8em;
+}  
+
+.d3-slider-range {
+  background:#2980b9;
+  left:0px;
+  right:0px;
+  height: 0.8em;
+  position: absolute;
+}
+
+.d3-slider-range-vertical {
+  background:#2980b9;
+  left:0px;
+  right:0px;
+  position: absolute;
+  top:0;
+}
+
+.d3-slider-vertical {
+    width: .8em;
+    height: 100px;
+}      
+
+.d3-slider-handle {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    background: #eee;
+    background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
+    z-index: 3;
+}
+
+.d3-slider-handle:hover {
+    border: 1px solid #999999;
+}
+
+.d3-slider-horizontal .d3-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+
+.d3-slider-axis {
+    position: relative;
+    z-index: 1;    
+}
+
+.d3-slider-axis-bottom {
+    top: .8em;
+}
+
+.d3-slider-axis-right {
+    left: .8em;
+}
+
+.d3-slider-axis path {
+    stroke-width: 0;
+    fill: none;
+}
+
+.d3-slider-axis line {
+    fill: none;
+    stroke: #aaa;
+    shape-rendering: crispEdges;
+}
+
+.d3-slider-axis text {
+    font-size: 11px;
+}
+
+.d3-slider-vertical .d3-slider-handle {
+    left: -.25em;
+    margin-left: 0;
+    margin-bottom: -.6em;      
+}
+
+ div.tooltip { 
+          position: absolute;     
+          text-align: center;     
+          width: 80px;          
+          height: 14px;         
+          padding: 2px;       
+          font: 12px sans-serif;    
+          background: #fff; 
+          border: 0px;        
+          pointer-events: none;     
+      }
+
+.anchor_size {
+  font-size:1.2rem;
+}
+
+.paras {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="multiline.css">
+
+<script src="https://d3js.org/d3.v3.js" charset="utf-8"></script>
+<script src="d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+
+<script src="d3.slider.js"></script>
+	</head>
+	<body>
+		
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+		<nav class="colorlib-nav" role="navigation">
+			<div class="top-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<div id="colorlib-logo"><a href="index.html" style="color:#cc0000;">Warning!</a></div>
+						</div>
+						<div class="col-md-10 text-right menu-1">
+							<ul>
+								<!-- <li class="active"><a href="index.html">Home</a></li> -->
+								<li class="has-dropdown">
+									<ul class="dropdown">
+										<li><a href=""></a></li>
+										<li><a href=""></a></li>
+									</ul>
+								</li>
+								<!-- <li><a href="services.html">Services</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="shop.html">Shop</a></li>
+								<li><a href="contact.html">Contact</a></li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<section id="home" class="video-hero" style="height: 700px; background-image: url();  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
+		<div class="overlay"></div>
+
+		<!-- <iframe class="player" width="560" height="315" src="https://www.youtube.com/embed/w_MxuYXhpks?start=2&end=6" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+ -->
+			<a class="player" data-property="{videoURL:'https://youtu.be/0Hlfd0l-jwY',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a> 
+			<div class="display-t text-center">
+				<div class="display-tc">
+					<div class="container">
+						<div class="col-md-12 col-md-offset-0">
+							<div class="animate-box">
+								<h2>Closer Look into Terrorism</h2>
+								<p>Who's coming for us?</p>
+<!-- 								<p><a href="gallery.html" class="btn btn-primary btn-lg btn-custom">Get premium</a></p>
+ -->							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+
+		<div class="colorlib-services colorlib-bg-white">
+
+      <center><img src="isis.jpg"></center><br>
+       <p align="justify" class="paras"> Martha Crenshaw, professor of Political Science at Stanford, argues that terrorist groups make calculated decisions to engage in terrorism, and moreover, that terrorism is a "political behavior resulting from the deliberate choice of a basically rational actor. "In addition to this, she suggests "Terrorism is a logical choice ... when the power ratio of government to challenger is high." 
+    
+    In the West, terrorism is primarily a law enforcement challenge while in countries like Afghanistan, Iraq, Syria, and Nigeria, it remains a law enforcement and military challenge, especially considering the magnitude of the threat. Some of the most capable groups in these countries, including Islamic State and al-Qaeda affiliates, are more akin to insurgent organizations that utilize terrorist tactics as part of their overall strategy. Given the local concentration of terrorism, the most effective approach to lowering the overall global rate of attacks and deaths is relentless, intelligence-led policing in the West and working toward resolving the persistent armed conflicts in the countries that continue to suffer the most from terrorism.
+
+    We will be using the Global Terrorism Database as our dataset. Lets dive in and which terror organizations are causing global terrorism. </p>
+
+    <center><strong><h3> Who is responsible ? </h3></strong></center>
+<!-- <p class="anchor_size"> <a href="bubble.html"> Click here to view </a></p> -->
+
+ <center><svg width="1024" height="960" font-family="sans-serif" font-size="10" text-anchor="middle" class="bubble"></svg></center>
+<h4 style="margin-left: 200px;">Number of casualties by different terror organizations </h4>
+
+<p class="paras" align="justify">This map shows the Number of Casualties caused by different terror organizations. As we can see that the number of people who died as a result of the attacks caused by the different organizations is highest by Taliban, Islamic State and Al-Qaida. So we dive in deeper by focusing on these three terror groups and try to find out their rise and fall over the years and the impact that they have made.</p><br>
+
+<!-- <center><h2><u> The Rise & Fall of ISIS, Taliban & Al-Qaida </u></h2></center><br> -->
+
+
+<center><strong><h3> The Rise & Fall of ISIS, AlQaeda & Taliban </h3></strong></center>
+<p class="paras" align="justify"> From the map below we can see the spread of various organizations across the world over the years. The Islamic State’s influence and model are spreading. Even in many Muslim countries where the Islamic State does not have a strong presence, its rise is radicalizing their populations, fomenting sectarianism, and making a troubled region worse. The Islamic State’s successes in Syria and Iraq alarmed many observers in Washington</p>
+
+<select id="terror_gname" class="paras">
+  <option value="isis">ISIS</option>
+  <option value="alqaida" selected="selected">Al-Qaida</option>
+  <option value="taliban">Taliban</option>
+</select>
+<div id="slider3"></div>
+
+<p id="helper"></p>
+<script src="helper.js">
+	</script>
+
+<svg class="slider_map"></svg>
+
+<br><br>
+
+<p class="paras" align="justify"> We can see that as ISIS spread over the last few years over the world has risen highly. Islamic State’s rise risks Al Qaeda’s demise. <br>
+<strong> Shifting ties between Al Qaeda & ISIS: </strong>
+When Islamic State leader Abu Bakr al-Baghdadi rejected Al Qaeda’s authority and later declared a caliphate, he split the always-fractious jihadist movement. The two are now competing for more than the leadership of the jihadist movement: they are competing for its soul.</p>
+
+
+<p class="paras" align="justify""> After we observe that the most deadliest terrorist groups, we analyse the trend of number of attacks plotted by the 3 groups around the world over the years. </p>
+
+<center><h4> Number of attacks by ISIS, Al-Qaida and Taliban over the Years </h4></center>
+
+
+<div class="chart-wrapper" id="chart-line1"></div><br>
+
+<p class="paras" align="justify"> The number of attacks by these organizations started rising from 2002. As we see Al-Qaida has been prevalent over the years and have been attacking consistently till date. For Taliban we observe that the number of attacks have increased tremendously uptil 2014. As we know that ISIS was reformed in 2013 which is when the number of attacked by this group has increased suddenly by a large number and has been increasing ever since proving that ISIS has been most deadliest of them causing a lot of casualties. The Taliban and ISIS are highly active, relentlessly violent, and remarkable at defying the odds. </p>
+
+<center><strong><h3> ACTS OF MASS MURDER </h3></strong></center><br>
+<p class="paras" align="justify">We are able to see that even after the number of attacks by these terror organizations is higher in other countries, the most affected country by far has been the US. The impact of attacks has been most severe in the US leaving behind casualties. A major part of the reason of this goes to the 9/11 attack that took place in 2001 which left 2996 people dead.</p>
+
+  <center><svg class="stackbar"></svg><br></center><br>
+<p class="paras" align="justify"> The attacks on the World Trade Center and the Pentagon on 9/11 are the most prominent, but the 1998 bombings of the U.S. embassies in Kenya and Tanzania, the attack on U.S.S. Cole in the port of Aden in 2000, and plots like the 2005 attempt to down over 10 transatlantic flights all show an emphasis on the spectacular. The attacks demonstrated the power, capabilities, reach, and sheer audacity of the organization. But although the 9/11 attacks electrified the global jihadist movement and raised Al Qaeda’s profile on the global stage.</p>
+
+
+<center><strong><h3> Who were the TARGETS? </h3></strong></center><br>
+
+<center><a href="piechart.html" class="paras" >Click here to view </a></center>
+<p class="paras" align="justify"> The piechart here shows the different number of attacks in each country. As we can see, the number of attacks in the US is lesser compared to other countries but still has high number of casualties, however Iraq has less number of casualties per attack. This also shows the imapct of attacks on different countires.</p>
+
+
+<script>
+
+var svg_bub = d3v4.select(".bubble"),
+    width = +svg_bub.attr("width"),
+    height = +svg_bub.attr("height");
+
+  // Define the div for the tooltip
+var div = d3v4.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+
+  svg_bub.append("text")
+    .attr("x", 100)
+    .attr("y", 20 )
+    .attr("dy", "3.5em" )
+    .attr("text-anchor", "start")
+    .style("font-size", "28px")
+  	.style("font-weight", "bold")
+    // .text("Life Losses by Terror Organizations")
+
+var pack = d3v4.pack()
+    .size([width-150, height])
+    .padding(1.5);
+d3v4.csv("test.csv", function(d) {
+  d.value = +d["Nkill"];
+  d.Call_Type = d["Gname"]
+  // d.value = +d["Count"];
+  // console.log(d.value)
+
+  // d.Call_Type = d["Call_Type"]
+
+return d;
+}, function(error, data) {
+  if (error) throw error;
+
+
+  var color = d3v4.scaleOrdinal()
+  .domain(data.map(function(d){ return d.Call_Type;}))
+  .range(['#fbb4ae','#b3cde3','#ccebc5','#decbe4','#fed9a6',
+  '#ffe9a8','#b9bfe3','#fddaec','#cccccc']);
+
+  var root = d3v4.hierarchy({children: data})
+      .sum(function(d) { return d.value; })
+
+  var node = svg_bub.selectAll(".node")
+    .data(pack(root).leaves())
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+
+  node.append("circle")
+      .attr("id", function(d) { return d.id; })
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.data.Call_Type); })
+      .on("mouseover", function(d) {
+    div.transition()
+      .duration(200)
+      .style("opacity", .9);
+
+      var duration = 300;
+  data.forEach(function(d, i) {
+    // console.log(d.value);
+    node.transition().duration(duration).delay(i * duration)
+        .attr("r", d.value);
+});
+
+
+    div.html(d.data.Call_Type + ": <br>"+d.data.value  )
+      .style("left", (d3v4.event.pageX) + "px")
+      .style("top", (d3v4.event.pageY - 28) + "px");
+  })
+    .on("mouseout", function(d) {
+    div.transition()
+      .duration(500)
+      .style("opacity", 0);
+  });
+
+
+
+   node.append("text")
+      .text(function(d) {
+     if (d.data.value > 1000 && d.data.Call_Type.length <20){
+       return d.data.Call_Type +"   " +d.data.value ;
+     }
+     return "";});
+
+
+
+  var legend = svg_bub.selectAll(".legend")
+  .data(data).enter()
+  .append("g")
+  .attr("class","legend")
+  .attr("transform", "translate(" + 870 + "," + 120+ ")");
+
+
+   legend.append("rect")
+     .attr("x", 0)
+     .attr("y", function(d, i) { return 20 * i; })
+     .attr("width", 15)
+     .attr("height", 15)
+		.style("fill", function(d) { return color(d.Call_Type)});
+
+
+    legend.append("text")
+     .attr("x", 25)
+    	.attr("text-anchor", "start")
+     .attr("dy", "1em")
+     .attr("y", function(d, i) { return 20 * i; })
+     .text(function(d) {return d.Call_Type;})
+    .attr("font-size", "12px");
+
+
+    legend.append("text")
+     .attr("x",100)
+     .attr("dy", "-.2em")
+     .attr("y",-10)
+     .text("Group Names")
+  	.attr("font-size", "17px");
+
+
+
+});
+
+</script>
+
+<script type="text/javascript">
+    d3.csv('linechart.csv', function(error, data) {
+    data.forEach(function (d) {
+        d.year = +d.year;
+        d.AlQaida = +d.AlQaida;
+        d.isis = +d.isis;
+        d.Taliban = +d.Taliban;
+    });
+
+    var chart = makeLineChart(data, 'year', {
+        'AlQaida': {column: 'AlQaida'},
+        'ISIS': {column: 'isis'},
+        'Taliban': {column: 'Taliban'},
+    }, {xAxis: 'Years', yAxis: 'Number of attacks'});
+    chart.bind("#chart-line1");
+    chart.render();
+
+});
+</script>
+<script src="multiline.js" charset="utf-8"></script>
+
+
+
+
+<script>
+
+var width = 960,
+    height = 600;
+
+var mapPath = "world-50m.json";
+
+var projection = d3.geo.mercator()
+    .scale(130)
+    .translate([width / 2, height / 1.5]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select(".slider_map")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("class","mapclass");
+
+var g= svg.append("g");
+
+d3.json(mapPath, function(error, world) {
+  if (error) return console.error(error);
+
+  // svg_map.append("path")
+  //     .datum(topojson.feature(world, world.objects.countries))
+  //     .attr("d", path)
+  //     .attr("class", "land-boundary");
+
+  // svg_map.append("path")
+  //     .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0); }))
+  //     .attr("d", path)
+  //     .attr("class", "county-boundary");
+  g.selectAll("path")
+      .data(topojson.feature(world,world.objects.countries).features)
+    .enter().append("path")
+      .attr("d", path)
+      .attr("class", "feature")
+
+  svg.append("path")
+      .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
+      .attr("d", path)
+      .attr("class", "mesh");
+
+
+  d3.csv("isisdata.csv")
+    .row(function(d) {
+      return {
+        groupname: d.groupname,
+        Country: d.Country,
+        lat: parseFloat(d.lat),
+        lng: parseFloat(d.lng),
+        Year: moment(d.Year,"YYYY")
+      };
+    })
+    .get(function(err, rows) {
+      if (err) return console.error(err);
+
+      window.site_data = rows;
+    });
+});
+
+
+var tooltip = d3.select("body").append("div") 
+        .attr("class", "tooltip")       
+        .style("opacity", 0);
+
+
+
+var displaySites = function(data) {
+  var sites = svg.selectAll(".site")
+      .data(data, function(d) {
+        // console.log(d);
+        return d.Country;
+      });
+
+
+  sites.enter().append("circle")
+      .attr("class", "site")
+      .attr("cx", function(d) {
+
+        return projection([d.lng, d.lat])[0];
+      })
+      .attr("cy", function(d) {
+         console.log(d);
+        return projection([d.lng, d.lat])[1];
+      })
+      .attr("r", 1)
+       .on("mouseover", function(d) {    
+            tooltip.transition()    
+            .duration(200)
+            .style('background', 'steelblue')    
+            .style("opacity", .9);    
+            tooltip.html(d.Country)  
+            .style("left", (d3.event.pageX) + "px")   
+            .style("top", (d3.event.pageY - 28) + "px");  
+          })          
+          .on("mouseout", function(d) {   
+            tooltip.transition()    
+            .duration(500)    
+            .style("opacity", 0); 
+          })
+      .transition().duration(400)
+        .attr("r", 5);
+       
+
+  sites.exit()
+    .transition().duration(200)
+      .attr("r",1)
+      .remove();
+};
+
+var minDateUnix = moment('1992', "YYYY");
+var maxDateUnix = moment('2017', "YYYY");
+var secondsInDay = 60 * 60 * 24 * 365;
+
+
+
+d3.select('#slider3').call(d3.slider()
+  .axis(true).min(minDateUnix).max(maxDateUnix).step(secondsInDay)
+  .on("slide", function(evt, value) {
+    var newData = _(site_data).filter( function(site) {
+
+
+      var e = document.getElementById("terror_gname");
+var terror_group = e.options[e.selectedIndex].value;
+
+      return (site.Year <= value) && (site.groupname == terror_group);
+    })
+    // console.log("New set size ", newData.length);
+    console.log(newData);
+
+    displaySites(newData);
+  })
+);
+
+</script>
+
+
+<script type="text/javascript">
+
+// Setup svg using Bostock's margin convention
+
+var margin_stack = {top: 25, right: 160, bottom: 35, left: 45};
+
+var width = 960 - margin_stack.left - margin_stack.right,
+    height = 500 - margin_stack.top - margin_stack.bottom;
+
+var svg_stack = d3.select(".stackbar")
+  .attr("width", width + margin_stack.left + margin_stack.right)
+  .attr("height", height + margin_stack.top + margin_stack.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin_stack.left + "," + margin_stack.top + ")");
+
+
+/* Data in strings like it would be if imported from a csv */
+
+var data = [
+  {country: "United States",alqaida: 3899,isis: 0,taliban: 0},
+  {country: "Syria",alqaida: 106,isis: 18,taliban: 1432},
+  {country: "Kenya",alqaida: 1413,isis: 0,taliban: 0},
+  {country: "Spain",alqaida: 332,isis: 0,taliban: 0},
+  {country: "United Kingdom",alqaida: 84,isis: 86,taliban: 0},
+  {country: "Belgium",alqaida: 0,isis: 103,taliban: 0},
+  {country: "Tanzania",alqaida: 96,isis: 0, taliban: 0},
+  {country: "Turkey",alqaida: 3,isis: 82,taliban: 0},
+  {country: "Ivory Coast",alqaida: 55,isis: 0,taliban: 0},
+  {country: "France",alqaida: 13,isis: 61,taliban: 0},
+  {country: "Iran",alqaida: 0,isis: 35,taliban: 0},
+  {country: "Iraq",alqaida: 23,isis: 12,taliban: 0},
+  // {country: "Phillippines",alqaida: 18,isis: 8,taliban: 0},
+  // {country: "Russia",alqaida: 6,isis: 2,taliban: 0},
+  // {country: "Saudi Arabia",alqaida: 15,isis: 15,taliban: 0},
+  // {country: "Spain",alqaida: 6,isis: 0,taliban: 0},
+  {country: "Syria",alqaida: 2,isis: 594,taliban: 0}
+  // {country: "Tunisia",alqaida: 5,isis: 5,taliban: 0},
+  // {country: "United Kingdom",alqaida: 9,isis: 2,taliban: 0},
+  // {country: "United States",alqaida: 6,isis: 0,taliban: 0},
+]
+
+
+
+// Transpose the data into layers
+var dataset = d3.layout.stack()(["alqaida", "isis", "taliban"].map(function(fruit) {
+  return data.map(function(d) {
+    return {x: d.country, y: +d[fruit]};
+  });
+}));
+
+
+// Set x, y and colors
+var x = d3.scale.ordinal()
+  .domain(dataset[0].map(function(d) { return d.x; }))
+  .rangeRoundBands([10, width-10], 0.02);
+
+var y = d3.scale.linear()
+  .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
+  .range([height, 0]);
+
+var colors = ["#66c2a5", "#fc8d62", "#8da0cb"];
+
+
+// Define and draw axes
+var yAxis = d3.svg.axis()
+  .scale(y)
+  .orient("left")
+  .ticks(5)
+  .tickSize(-width, 0, 0)
+  .tickFormat( function(d) { return d } );
+
+var xAxis = d3.svg.axis()
+  .scale(x)
+  .orient("bottom")
+  .tickFormat( function(d) { return d } );
+  // .tickFormat(d3.time.format("%Y"));
+
+svg_stack.append("g")
+  .attr("class", "y axis")
+  .call(yAxis);
+
+  svg_stack.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin_stack.left)
+    .attr("x",0 - (height / 1.5))
+    .attr("dy", "1em")
+    .style("font-size", "15px")
+    .text("Number of casualties per attack");
+
+svg_stack.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis);
+
+  svg_stack.append("text")
+      .attr("transform",
+            "translate(" + (width/2) + " ," +
+                           (height + margin_stack.top + 10) + ")")
+      .style("font-size", "15px")
+      .text("Countries");
+
+
+// Create groups for each series, rects for each segment
+var groups = svg_stack.selectAll("g.cost")
+  .data(dataset)
+  .enter().append("g")
+  .attr("class", "cost")
+  .style("fill", function(d, i) { return colors[i]; });
+
+var rect = groups.selectAll("rect")
+  .data(function(d) { return d; })
+  .enter()
+  .append("rect")
+  .attr("x", function(d) { return x(d.x); })
+  .attr("y", function(d) { return y(d.y0 + d.y); })
+  .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
+  .attr("width", x.rangeBand())
+  .on("mouseover", function() { tooltip_stack.style("display", null); })
+  .on("mouseout", function() { tooltip_stack.style("display", "none"); })
+  .on("mousemove", function(d) {
+    var xPosition = d3.mouse(this)[0] - 15;
+    var yPosition = d3.mouse(this)[1] - 25;
+    tooltip_stack.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+    tooltip_stack.select("text").text(d.y);
+  });
+
+
+// Draw legend
+var legend_stack = svg_stack.selectAll(".legend")
+  .data(colors)
+  .enter().append("g")
+  .attr("class", "legend")
+  .attr("transform", function(d, i) { return "translate(30," + i * 19 + ")"; });
+
+legend_stack.append("rect")
+  .attr("x", width - 18)
+  .attr("width", 18)
+  .attr("height", 18)
+  .style("fill", function(d, i) {return colors.slice().reverse()[i];});
+
+legend_stack.append("text")
+  .attr("x", width + 5)
+  .attr("y", 9)
+  .attr("dy", ".35em")
+  .style("text-anchor", "start")
+  .text(function(d, i) {
+    switch (i) {
+      case 0: return "ISIS";
+      case 1: return "Taliban";
+      case 2: return "Al-Qaida";
+    }
+  });
+
+
+// Prep the tooltip bits, initial display is hidden
+var tooltip_stack = svg_stack.append("g")
+  .attr("class", "tooltip")
+  .style("display", "none");
+
+tooltip_stack.append("rect")
+  .attr("width", 30)
+  .attr("height", 20)
+  .attr("fill", "white")
+  .style("opacity", 0.5);
+
+tooltip_stack.append("text")
+  .attr("x", 15)
+  .attr("dy", "1.2em")
+  .style("text-anchor", "middle")
+  .attr("font-size", "12px")
+  .attr("font-weight", "bold");
+
+</script>
+
+			
+		</div>
+
+		<div class="colorlib-intro">
+			<div class="container">
+				<div class="row">
+					
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- YTPlayer -->
+	<script src="js/jquery.mb.YTPlayer.min.js"></script>
+	<!-- Owl carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+

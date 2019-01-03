@@ -1,0 +1,151 @@
+<html>
+<head></head>
+<body>
+
+<div id="pieChart"></div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
+<script src="d3pie.min.js"></script>
+<script>
+var pie = new d3pie("pieChart", {
+	"header": {
+		"title": {
+			"text": "Number of Attacks ",
+			"fontSize": 24,
+			"font": "open sans"
+		},
+		"subtitle": {
+			"text": "The chart shows the distribution of number of attacks in the most affected countries",
+			"color": "#999999",
+			"fontSize": 12,
+			"font": "open sans"
+		},
+		"titleSubtitlePadding": 9
+	},
+	"footer": {
+		"color": "#999999",
+		"fontSize": 10,
+		"font": "open sans",
+		"location": "bottom-left"
+	},
+	"size": {
+		"canvasWidth": 590,
+		"pieOuterRadius": "97%"
+	},
+	"data": {
+		"sortOrder": "value-desc",
+		"content": [
+			{
+				"label": "Iraq",
+				"value": 24636,
+				"color": "#8dd3c7"
+			},
+			{
+				"label": "United Kingdom",
+				"value": 5235,
+				"color": "#ffffb3"
+			},
+			{
+				"label": "Spain",
+				"value": 3249,
+				"color": "#bebada"
+			},
+			{
+				"label": "United States",
+				"value": 2836,
+				"color": "#fb8072"
+			},
+			{
+				"label": "France",
+				"value": 2693,
+				"color": "#80b1d3"
+			},
+			{
+				"label": "Syria",
+				"value": 2201,
+				"color": "#fdb462"
+			},
+			{
+				"label": "Iran",
+				"value": 684,
+				"color": "#b3de69"
+			},
+			{
+				"label": "Kenya",
+				"value": 683,
+				"color": "#fccde5"
+			},
+			{
+				"label": "Belgium",
+				"value": 154,
+				"color": "#d9d9d9"
+			},
+			{
+				"label": "Ivory Coast",
+				"value": 74,
+				"color": "#bc80bd"
+			},
+			{
+				"label": "Tanzania",
+				"value": 59,
+				"color": "#ccebc5"
+			}
+		]
+	},
+	"labels": {
+		"outer": {
+			"pieDistance": 32
+		},
+		"inner": {
+			"format": "none",
+			"hideWhenLessThanPercentage": 3
+		},
+		"mainLabel": {
+			"color": "#0d0d0e",
+			"fontSize": 11
+		},
+		"percentage": {
+			"color": "#ffffff",
+			"decimalPlaces": 0
+		},
+		"value": {
+			"color": "#adadad",
+			"fontSize": 11
+		},
+		"lines": {
+			"enabled": true
+		},
+		"truncation": {
+			"enabled": true
+		}
+	},
+	"tooltips": {
+		"enabled": true,
+		"type": "placeholder",
+		"string": "{label}: {value}, {percentage}%",
+		"styles": {
+			"backgroundColor": "#200202",
+			"backgroundOpacity": 0.6
+		}
+	},
+	"effects": {
+		"load": {
+			"effect": "none"
+		},
+		"pullOutSegmentOnClick": {
+			"effect": "none",
+			"speed": 1130,
+			"size": 8
+		}
+	},
+	"misc": {
+		"gradient": {
+			"enabled": true,
+			"percentage": 100
+		}
+	}
+});
+</script>
+
+</body>
+</html>
